@@ -8,21 +8,20 @@ using DigitCenterTestTask.Model;
 
 namespace DigitCenterTestTask.Controller
 {
-    class MainController
+    interface IRecordController
+    {
+        IReadOnlyList<AbstractRecord> Records { get; }
+        void AddRecord(AbstractRecord record);
+        void DeleteRecord(AbstractRecord record);
+    }
+
+    class RecordController : IRecordController
     {
         private IList<AbstractRecord> records = new List<AbstractRecord>();
 
         public void AddRecord(AbstractRecord record)
         {
             records.Add(record);
-        }
-
-        public IReadOnlyList<MessageRecord> MessageRecords {
-            get { return new List<MessageRecord>(records.OfType<MessageRecord>()); }
-        }
-
-        public IReadOnlyList<PersonRecord> PersonRecords {
-            get { return new List<PersonRecord>(records.OfType<PersonRecord>()); }
         }
 
         public IReadOnlyList<AbstractRecord> Records {

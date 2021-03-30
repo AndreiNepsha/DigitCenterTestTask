@@ -13,13 +13,8 @@ namespace DigitCenterTestTask
     {
         static void Main(string[] args)
         {
-            var mainController = new MainController();
+            var mainController = new RecordController();
             var consoleView = new AppConsoleView(mainController);
-
-            mainController.AddRecord(new Model.MessageRecord("Test message"));
-            mainController.AddRecord(
-                new Model.PersonRecord("Ivanov", "Ivan", DateTime.Parse("1995-04-26"))
-            );
 
             consoleView.StartProcessRenderLoop();
         }
